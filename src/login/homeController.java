@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -107,7 +108,9 @@ public class homeController implements Initializable{
     @FXML
     private TableColumn<hikingHistory, String> paceColumn;
     
-    
+    @FXML
+    private Button adminBtn;
+
 
     
     //start of methods
@@ -115,15 +118,28 @@ public class homeController implements Initializable{
     	selectedPerson=user;
     }
     
-    
+    @FXML
+    void goToAdminPage(ActionEvent event) throws IOException {
+    	FXMLLoader loader =new FXMLLoader();
+    	loader.setLocation(getClass().getResource("/view/adminFunctionView.fxml"));
+    	Parent root= loader.load();
+    	
+    	//hikingHistoryController controller= loader.getController();
+		//Parent root = FXMLLoader.load(getClass().getResource("/login/homeController.fxml"));
+        Scene scene = new Scene(root);
+        
+        
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
+    }
     
     //the method below allows for users to search for the trail through a button
-    //****UNCOMMENT BELOW***
     
     @FXML
     void searchTable(ActionEvent event) {
     	//wraps observableList
-    	System.out.println(trailList);
+    	//System.out.println(trailList);
     	FilteredList<Trails> filteredData=new FilteredList<>(trailList);
     	//setting filter predicate
     	searchField.textProperty().addListener((observable, oldValue, newValue)->{
@@ -160,70 +176,36 @@ public class homeController implements Initializable{
     
 	
 
-	@Override
+    @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		users=main.getUsers();
 		trails=main.getTrails();
-		history=main.getHistory();
-		userMan=main.getUserMan();
+		//history=main.getHistory();
+		selectedPerson=main.getUserMan();
+		history=selectedPerson.getHikingHistory();
 		
-		comboBox.getItems().addAll(trailType.LOOP.toString(),
-		trailType.OUTANDBACK.toString(),trailType.POINTTOPOINT.toString(),"none");
-		
-		difficultyComboBox.getItems().addAll(Difficulty.EASY.toString(),
-				Difficulty.MODERATE.toString(),Difficulty.HARD.toString(),"none");
-		
-		
-		Iterator<Map.Entry<String,User>> userIterator=users.entrySet().iterator();
-		while(userIterator.hasNext()) {
-			Map.Entry<String, User> entry=userIterator.next();
-			userList.add(entry.getValue());
+		if(!selectedPerson.checkAdminStatus())
+		{
+			adminBtn.setDisable(true);
 		}
+		else
+			adminBtn.setDisable(false);
 		
-		nameColumn.setCellValueFactory(new PropertyValueFactory<User,String>("firstName"));
-		lastNameColumn.setCellValueFactory(new PropertyValueFactory<User,String>("lastName"));
-		usernameColumn.setCellValueFactory(new PropertyValueFactory<User,String>("userName"));
-		telephoneColumn.setCellValueFactory(new PropertyValueFactory<User,String>("telephoneNumber"));
-		personTableView.setItems(userList);
-		
-		Iterator<Map.Entry<String,hikingHistory>> historyIterator=history.entrySet().iterator();
-		while(historyIterator.hasNext()) {
-			Map.Entry<String, hikingHistory> entry=historyIterator.next();
-			hiking.add(entry.getValue());
-		}
-	
-		
-		historyName.setCellValueFactory(new PropertyValueFactory<hikingHistory,String>("trailName"));
-		dateStartColumn.setCellValueFactory(new PropertyValueFactory<hikingHistory,String>("dateAndStartTime"));
-		dateEndColumn.setCellValueFactory(new PropertyValueFactory<hikingHistory,String>("dateAndEndTime"));
-		distanceHikedColumn.setCellValueFactory(new PropertyValueFactory<hikingHistory,String>("distanceHiked"));
-		durationColumn.setCellValueFactory(new PropertyValueFactory<hikingHistory,String>("duration"));
-		paceColumn.setCellValueFactory(new PropertyValueFactory<hikingHistory,String>("averagePace"));
-		historyTable.setItems(hiking);
-		
-		//hashmap implement trails table here
+		initBoxes();
+//		firstNameLabel.setText(selectedPerson.getFirstName());
+//		comboBox.getItems().addAll(trailType.LOOP.toString(),
+//		trailType.OUTANDBACK.toString(),trailType.POINTTOPOINT.toString(),"none");
+//		
+//		difficultyComboBox.getItems().addAll(Difficulty.EASY.toString(),
+//				Difficulty.MODERATE.toString(),Difficulty.HARD.toString(),"none");
 		
 		
-		Iterator<Map.Entry<String,Trails>> trailIterate=trails.entrySet().iterator();
-		while(trailIterate.hasNext()) {
-			Map.Entry<String, Trails> entry=trailIterate.next();
-			trailList.add(entry.getValue());
-		}
-	
-	
-	
-	trailNameColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("trailName"));
-	addressColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("address"));
-	lengthColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("miles"));
-	elevationColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("elevationInFeet"));
-	difficultyColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("difficultyLevel"));
-	typeColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("type"));
-	trailTableView.setItems(trailList);
-	
+		//sets all table cells
+		initData();
 	
 	//wraps observableList
-	System.out.println(trailList);
+
 	FilteredList<Trails> filteredData=new FilteredList<>(trailList);
 	//setting filter predicate
 	searchField.textProperty().addListener((observable, oldValue, newValue)->{
@@ -247,26 +229,27 @@ public class homeController implements Initializable{
 	});
 	
 	//Sorted list
-	SortedList<Trails> sortedList=new SortedList<>(filteredComboData);
-	//stuffer
-	sortedList.comparatorProperty().bind(trailTableView.comparatorProperty());
-	trailNameColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("trailName"));
-	addressColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("address"));
-	lengthColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("miles"));
-	elevationColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("elevationInFeet"));
-	difficultyColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("difficultyLevel"));
-	typeColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("type"));
-	trailTableView.setItems(sortedList);
+//	SortedList<Trails> sortedList=new SortedList<>(filteredComboData);
+//	//stuffer
+//	sortedList.comparatorProperty().bind(trailTableView.comparatorProperty());
+//	trailNameColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("trailName"));
+//	addressColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("address"));
+//	lengthColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("miles"));
+//	elevationColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("elevationInFeet"));
+//	difficultyColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("difficultyLevel"));
+//	typeColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("type"));
+//	trailTableView.setItems(sortedList);
 	
 		
 		System.out.println(users);
 		System.out.println(trails);
-		System.out.println(history);
+		System.out.println(history+"\n");
 		
 		
 		
 	}
 	
+	//below is used for search
 	private boolean searchFindsOrder(Trails trail, String searchText) {
 		return (trail.getTrailName().toLowerCase().contains(searchText.toLowerCase()));
 	}
@@ -277,6 +260,90 @@ public class homeController implements Initializable{
 			return searchFindsOrder(trail,searchText);
 		};
 	}
+	//to be implemented
+	private Predicate<Trails> createBoxPredicate(String searchText){
+		return trail->{
+			if(searchText==null||searchText.isEmpty()) return true;
+			return searchFindsOrder(trail,searchText);
+		};
+	}
+	
+	
+	
+	//below are iterators
+	public void iterateUserMap() {
+		Iterator<Map.Entry<String,User>> userIterator=users.entrySet().iterator();
+		while(userIterator.hasNext()) {
+			Map.Entry<String, User> entry=userIterator.next();
+			userList.add(entry.getValue());
+		}
+	}
+	
+	public void iterateTrailMap() {
+		Iterator<Map.Entry<String,Trails>> trailIterate=trails.entrySet().iterator();
+		while(trailIterate.hasNext()) {
+			Map.Entry<String, Trails> entry=trailIterate.next();
+			trailList.add(entry.getValue());
+		}
+	}
+	
+	public void iterateHistoryMap() {
+		if(history!=null) {
+		Iterator<Map.Entry<String,hikingHistory>> historyIterator=history.entrySet().iterator();
+		while(historyIterator.hasNext()) {
+			Map.Entry<String, hikingHistory> entry=historyIterator.next();
+			hiking.add(entry.getValue());
+		}
+		}
+		
+	}
+	
+	public void initBoxes() {
+		firstNameLabel.setText(selectedPerson.getFirstName());
+		comboBox.getItems().addAll(trailType.LOOP.toString(),
+		trailType.OUTANDBACK.toString(),trailType.POINTTOPOINT.toString(),"none");
+		
+		difficultyComboBox.getItems().addAll(Difficulty.EASY.toString(),
+				Difficulty.MODERATE.toString(),Difficulty.HARD.toString(),"none");
+	}
+	// the following sets the data i the table view
+	
+	public void initData() {
+		iterateUserMap();
+		
+		nameColumn.setCellValueFactory(new PropertyValueFactory<User,String>("firstName"));
+		lastNameColumn.setCellValueFactory(new PropertyValueFactory<User,String>("lastName"));
+		usernameColumn.setCellValueFactory(new PropertyValueFactory<User,String>("userName"));
+		telephoneColumn.setCellValueFactory(new PropertyValueFactory<User,String>("telephoneNumber"));
+		personTableView.setItems(userList);
+		
+		iterateTrailMap();
+	
+		
+		historyName.setCellValueFactory(new PropertyValueFactory<hikingHistory,String>("trailName"));
+		dateStartColumn.setCellValueFactory(new PropertyValueFactory<hikingHistory,String>("dateAndStartTime"));
+		dateEndColumn.setCellValueFactory(new PropertyValueFactory<hikingHistory,String>("dateAndEndTime"));
+		distanceHikedColumn.setCellValueFactory(new PropertyValueFactory<hikingHistory,String>("distanceHiked"));
+		durationColumn.setCellValueFactory(new PropertyValueFactory<hikingHistory,String>("duration"));
+		paceColumn.setCellValueFactory(new PropertyValueFactory<hikingHistory,String>("averagePace"));
+		historyTable.setItems(hiking);
+		
+		//hashmap implement trails table here
+		
+		
+		iterateHistoryMap();
+	
+	
+	
+		trailNameColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("trailName"));
+		addressColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("address"));
+		lengthColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("miles"));
+		elevationColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("elevationInFeet"));
+		difficultyColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("difficultyLevel"));
+		typeColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("type"));
+		trailTableView.setItems(trailList);
+	}
+	
 	
 	
 }

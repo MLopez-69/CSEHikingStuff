@@ -1,6 +1,9 @@
 package login;
 
+import java.util.TreeMap;
+
 import hikers.userStatus;
+import hikingHistory.hikingHistory;
 
 public class User {
 	
@@ -18,14 +21,14 @@ public class User {
 	//these is a placeholder for now
 	
 	private String profilePic;
-	private String hikingHistory;
+	private TreeMap<String,hikingHistory> hikingHistory;
 	
 	public User() {
 		
 	}
 	
 	public User(String userName, String password, String firstName, String lastName, String telephoneNumber,
-			String profilePic, String hikingHistory, userStatus status) {
+			String profilePic, TreeMap<String,hikingHistory> hikingHistory, userStatus status) {
 		super();
 		this.userName = userName;
 		this.password = password;
@@ -83,14 +86,14 @@ public class User {
 		this.profilePic = profilePic;
 	}
 	
-	public String getHikingHistory() {
+	public TreeMap<String,hikingHistory> getHikingHistory() {
 		return hikingHistory;
 	}
-	public void setHikingHistory(String hikingHistory) {
+	public void setHikingHistory(TreeMap<String,hikingHistory> hikingHistory) {
 		this.hikingHistory = hikingHistory;
 	}
 	
-	private void setStatus(userStatus status) {
+	public void setStatus(userStatus status) {
 		this.status=status;
 	}
 	
@@ -102,21 +105,26 @@ public class User {
 	
 	public boolean checkAdminStatus(User user) {
 		//userStatus state=userStatus.Admin;
-		String userStats=user.getStatus().toString();
-		String checker= userStatus.Admin.toString();
+		String userStats=user.getStatus().toString().toLowerCase();
+		String checker= userStatus.Admin.toString().toLowerCase();
 		if(userStats.compareTo(checker)!=0) {
 			return true;
 		}
 		else
 			return false;
 	}
-	
-	public void setAdminStatus(User user, userStatus status) {
-		if(checkAdminStatus(user)) {
-			user.setStatus(status);
+	public boolean checkAdminStatus() {
+		//userStatus state=userStatus.Admin;
+		String userStats=status.toString().toLowerCase();
+		String checker= userStatus.Admin.toString().toLowerCase();
+		//status.com
+		if(userStats.compareTo(checker)!=0) {
+			return false;
 		}
+		else
+			return true;
 	}
-
+	
 
 	//maybe change to switch later
 	public boolean checkPassword(String password) {
@@ -129,6 +137,14 @@ public class User {
 			return true;
 		
 	}
+	
+//	public userStatus statusConverter(String arg) {
+//		switch(arg.toLowerCase()) {
+//		case ("admin"): return userStatus.Admin;
+//		case ("nonadmin"): return userStatus.nonAdmin;
+//		default: return userStatus.nonAdmin;
+//		}
+//	}
 	
 	
 	

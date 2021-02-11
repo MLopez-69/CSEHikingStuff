@@ -52,7 +52,8 @@ public class controller implements Initializable{
 	    	
 	    	if(users.containsKey(usernameField.getText())){
 	    		user=users.get(usernameField.getText());
-	    		if( user.checkPassword(passwordField.getText())) {	
+	    		if( user.checkPassword(passwordField.getText())) {
+	    			main.setUserMan(user);
 	    		
 	    		FXMLLoader loader =new FXMLLoader();
 		    	loader.setLocation(getClass().getResource("/login/home.fxml"));

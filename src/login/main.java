@@ -22,21 +22,15 @@ public class main extends Application{
 	public static TreeMap<String, User> users;
 	public static HashMap<String, Trails> trails;
 	public static TreeMap<String,hikingHistory> history;
+	
+
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
 		
 		//below are the methods that initialize the lists
-		
-		users=new TreeMap<String, User>();
-		User marco= new User("mike","pass","Marco","Polo","1234567890","insert photo","",userStatus.nonAdmin);
-		Admin chad= new Admin("max","pain","Chad","drip","1234567890","insert photo","", userStatus.Admin);
-		//test user
-		userMan=chad;
-		
-		users.put(marco.getUserName(), marco);
-		users.put(chad.getUserName(), chad);
 		
 		trails=new HashMap<String, Trails>(500000);
 		
@@ -58,7 +52,25 @@ public class main extends Application{
 		history.put(hist2.getTrailName(), hist2);
 		history.put(hist3.getTrailName(), hist3);
 		
+		TreeMap<String,hikingHistory> history2=new TreeMap<String,hikingHistory>();
 		
+		hikingHistory hist11=new hikingHistory("creep","02-01-21 6:00pm","02-01-21 9:00pm","23 mi","2","","30mph");
+		hikingHistory hist22=new hikingHistory("cryon","02-04-21 6:00pm","02-04-21 9:00pm","40 mi","3","","50mph");
+		hikingHistory hist33=new hikingHistory("samuel","02-09-21 6:00pm","02-09-21 9:00pm","50 mi","4","","60mph");
+		
+		history2.put(hist11.getTrailName(), hist11);
+		history2.put(hist22.getTrailName(), hist22);
+		history2.put(hist33.getTrailName(), hist33);
+		
+		//users start here
+		users=new TreeMap<String, User>();
+		User marco= new User("mike","pass","Marco","Polo","1234567890","insert photo",history,userStatus.nonAdmin);
+		Admin chad= new Admin("max","pain","Chad","drip","1234567890","insert photo",history2, userStatus.Admin);
+		//test user
+		userMan=chad;
+		
+		users.put(marco.getUserName(), marco);
+		users.put(chad.getUserName(), chad);
 		
 		Application.launch(args);
 
@@ -89,6 +101,24 @@ public class main extends Application{
 	public static User getUserMan() {
 	return userMan;
 }
+
+	public static void setUserMan(User user) {
+		userMan=user;
+	}
+
+	public static void setUsers(TreeMap<String, User> users) {
+		main.users = users;
+	}
+
+	public static void setTrails(HashMap<String, Trails> trails) {
+		main.trails = trails;
+	}
+
+	public static void setHistory(TreeMap<String, hikingHistory> history) {
+		// TODO Auto-generated method stub
+		main.history = history;
+	}
+
 
 
 

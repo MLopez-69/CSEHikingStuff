@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import java.util.TreeMap;
 
 import hikers.userStatus;
+import hikingHistory.hikingHistory;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -88,10 +89,11 @@ public class signupController implements Initializable {
 	    	
 	    	String phoneNUmber=phoneField.getText();
 	    	String picture="";
-	    	String trail="";
-	    	
+	    	//hikingHistory trail="";
+	    	TreeMap<String, hikingHistory> history=new TreeMap<>();
 	    	//
-	    	User newUser=new User(userName,password,firstName,lastName,phoneNUmber,picture,trail, userStatus.nonAdmin);
+	    	User newUser=new User(userName,password,firstName,lastName,phoneNUmber,picture,
+	    			 history, userStatus.nonAdmin);
 	    	
 	    	users.put(newUser.getUserName(), newUser);
 	    	this.userName=userName;
