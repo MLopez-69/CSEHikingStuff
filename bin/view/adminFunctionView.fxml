@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="902.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.AdminViewController">
+   <children>
+      <TabPane layoutX="1.0" layoutY="25.0" prefHeight="455.0" prefWidth="902.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="User Table">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="432.0" prefWidth="788.0">
+                     <children>
+                        <TableView fx:id="userTable" layoutY="1.0" onMouseClicked="#editUserClick" prefHeight="425.0" prefWidth="467.0">
+                          <columns>
+                            <TableColumn fx:id="usernameColumn" prefWidth="75.0" text="username" />
+                            <TableColumn fx:id="passwordColumn" prefWidth="75.0" text="Password" />
+                              <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="first Name" />
+                              <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="last Name" />
+                              <TableColumn fx:id="phoneColumn" prefWidth="90.0" text="phone number" />
+                              <TableColumn fx:id="statusColumn" prefWidth="75.0" text="User Status" />
+                          </columns>
+                        </TableView>
+                        <GridPane layoutX="467.0" layoutY="1.0" prefHeight="268.0" prefWidth="287.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <TextField promptText="edit Username" />
+                              <TextField fx:id="passwordField" promptText="edit Password" GridPane.columnIndex="1" />
+                              <TextField fx:id="lastNameField" promptText="edit last Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="firstNameField" promptText="edit First Name" GridPane.rowIndex="1" />
+                              <TextField fx:id="phoneNumber" promptText="edit PhoneNumber" GridPane.rowIndex="2" />
+                              <TextField fx:id="userNameField" onMouseClicked="#editUserClick" promptText="edit username" />
+                              <ComboBox fx:id="statusComboBox" prefWidth="150.0" promptText="user Status" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                        <Button layoutX="467.0" layoutY="277.0" mnemonicParsing="false" onAction="#editUserProfile" text="edit user" />
+                        <Button layoutX="826.0" layoutY="277.0" mnemonicParsing="false" onAction="#removeUser" text="ban user" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Hiking History Edit">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="427.0" prefWidth="902.0">
+                     <children>
+                        <TableView fx:id="historyTable" onMouseClicked="#editHistoryClick" prefHeight="425.0" prefWidth="469.0">
+                           <columns>
+                              <TableColumn fx:id="hikingNameColumn" prefWidth="75.0" text="TrailName" />
+                              <TableColumn fx:id="dateStartColumn" prefWidth="75.0" text="date/Start" />
+                              <TableColumn fx:id="dateEndColumn" prefWidth="75.0" text="Date/End" />
+                              <TableColumn fx:id="distanceHikedColumn" prefWidth="90.0" text="distance Hiked" />
+                              <TableColumn fx:id="durationColumn" prefWidth="70.0" text="duration" />
+                              <TableColumn fx:id="paceColumn" text="AveragePace" />
+                           </columns>
+                        </TableView>
+                        <GridPane layoutX="536.0" layoutY="14.0" prefHeight="268.0" prefWidth="287.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <TextField promptText="edit Username" />
+                              <TextField fx:id="dateStartField" promptText="edit date/Start" GridPane.columnIndex="1" />
+                              <TextField fx:id="dateEndField" promptText="edit date/End" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="distanceField" promptText="edit distance" GridPane.rowIndex="1" />
+                              <TextField fx:id="trailField" promptText="edit trail name" />
+                              <TextField fx:id="durationField" promptText="edit duration" GridPane.rowIndex="2" />
+                              <TextField fx:id="averagePaceField" promptText="edit pace" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                        <Button layoutX="536.0" layoutY="319.0" mnemonicParsing="false" onAction="#editHistory" text="edit history" />
+                        <Button layoutX="734.0" layoutY="319.0" mnemonicParsing="false" onAction="#deleteHistory" text="delete history" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="trailEditor">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="432.0" prefWidth="765.0">
+                     <children>
+                        <TableView fx:id="trailTable" layoutY="44.0" onMouseClicked="#editTrailClick" prefHeight="381.0" prefWidth="471.0">
+                           <columns>
+                              <TableColumn fx:id="trailNameColumn" prefWidth="75.0" text="TrailName" />
+                              <TableColumn fx:id="addressColumn" prefWidth="75.0" text="address" />
+                              <TableColumn fx:id="lengthColumn" prefWidth="75.0" text="length" />
+                              <TableColumn fx:id="elevationColumn" prefWidth="90.0" text="elevation" />
+                              <TableColumn fx:id="difficultyColumn" prefWidth="70.0" text="difficulty" />
+                              <TableColumn fx:id="typeColumn" prefWidth="90.0" text="type" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="749.0" layoutY="350.0" mnemonicParsing="false" onAction="#deleteTrail" text="delete trail" />
+                        <GridPane layoutX="535.0" layoutY="14.0" prefHeight="268.0" prefWidth="287.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <TextField promptText="edit Username" />
+                              <TextField fx:id="addressField" promptText="edit address" GridPane.columnIndex="1" />
+                              <TextField fx:id="elevationField" promptText="edit elevation" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="lengthField" promptText="edit length" GridPane.rowIndex="1" />
+                              <TextField fx:id="trailNameField" promptText="edit trail name" />
+                              <ComboBox fx:id="trailTypeBox" prefWidth="150.0" promptText="edit type" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <ComboBox fx:id="difficultyBox" prefWidth="150.0" promptText="edit difficulty" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                        <Button layoutX="535.0" layoutY="350.0" mnemonicParsing="false" onAction="#editTrail" text="edit trail" />
+                        <Button layoutX="647.0" layoutY="350.0" mnemonicParsing="false" onAction="#addTrail" text="Add Trail" />
+                        <TextField fx:id="searchField" layoutX="14.0" layoutY="14.0" promptText="search trail here" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Label layoutX="397.0" prefHeight="25.0" prefWidth="109.0" text="admins Only Screen" />
+      <Button layoutX="393.0" layoutY="551.0" mnemonicParsing="false" onAction="#backTrack" text="head back to home" />
+   </children>
+</Pane>
