@@ -7,9 +7,19 @@ import java.util.ResourceBundle;
 import java.util.TreeMap;
 
 import hikers.Trails;
+<<<<<<< HEAD
 import hikers.User;
 import hikers.hikingHistory;
 import hikers.hikingIO;
+=======
+<<<<<<< HEAD
+import hikers.User;
+import hikers.hikingHistory;
+import hikers.hikingIO;
+=======
+import hikingHistory.hikingHistory;
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
+>>>>>>> 3db2a5f05986a306f42909992b5cd718a2e96471
 
 //import org.w3c.dom.Node;
 
@@ -44,6 +54,7 @@ public class controller implements Initializable{
 	 
 	 @FXML
 	    void exitProgram(ActionEvent event) {
+		 
 			try {
 			hikingIO.saveTrailData(trails);
 			hikingIO.saveUserData(users);
@@ -51,7 +62,6 @@ public class controller implements Initializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			
 		 System.exit(0);
 	    }
 
@@ -82,7 +92,6 @@ public class controller implements Initializable{
 
 	    @FXML
 	    void signUpButtonPressed(ActionEvent event) throws IOException {
-	    	
 	    	Parent root = FXMLLoader.load(getClass().getResource("/view/signUp.fxml"));
 	        Scene scene = new Scene(root);
 	        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -102,6 +111,7 @@ public class controller implements Initializable{
 //			System.out.println(trails);
 //			System.out.println(history);
 //			System.out.println(userMan);
+
 		}
 		
 		public User getUser() {

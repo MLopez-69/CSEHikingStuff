@@ -19,6 +19,7 @@ import hikers.userStatus;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -36,10 +37,19 @@ public class main extends Application{
 	
 
 	public static void main(String[] args) {
+		
 		//below are the methods that initialize the lists
 		
 //		trails=new HashMap<String, Trails>(500000);
 //		
+//		Trails trail1=new Trails("cameo","address","230","140",Difficulty.EASY,trailType.LOOP);
+//		Trails trail2=new Trails("prime","118 buffalo","230","140",Difficulty.MODERATE,trailType.OUTANDBACK);
+//		Trails trail3=new Trails("hammmer","resting road","230","140",Difficulty.HARD,trailType.POINTTOPOINT);
+//		
+//		trails.put(trail1.getTrailName(), trail1);
+//		trails.put(trail2.getTrailName(), trail2);
+//		trails.put(trail3.getTrailName(), trail3);
+		
 //		LinkedList<String> tryhard=new LinkedList<String>();
 //		pictures=new LinkedList<String>();
 //		pictures.add("/images/trailPic.jpg");
@@ -88,9 +98,8 @@ public class main extends Application{
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	
-		
 		Application.launch(args);
+
 	}
 
 	@Override
@@ -135,6 +144,5 @@ public class main extends Application{
 		// TODO Auto-generated method stub
 		main.history = history;
 	}
-
-
+	
 }

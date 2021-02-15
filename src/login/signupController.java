@@ -5,9 +5,20 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 
+<<<<<<< HEAD
 import hikers.User;
 import hikers.hikingHistory;
 import hikers.userStatus;
+=======
+<<<<<<< HEAD
+import hikers.User;
+import hikers.hikingHistory;
+import hikers.userStatus;
+=======
+import hikers.userStatus;
+import hikingHistory.hikingHistory;
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
+>>>>>>> 3db2a5f05986a306f42909992b5cd718a2e96471
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

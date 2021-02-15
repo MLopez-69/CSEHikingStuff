@@ -1,5 +1,6 @@
 package login;
 
+
 import java.awt.Desktop;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -20,11 +21,13 @@ import hikers.User;
 import hikers.hikingHistory;
 import hikers.hikingIO;
 import hikers.trailType;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.embed.swing.SwingFXUtils;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,6 +48,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import view.hikingHistoryController;
 
 public class homeController implements Initializable{
 	private HashMap<String,Trails> trails;
@@ -111,7 +115,6 @@ public class homeController implements Initializable{
     private ComboBox<String> lengthBox;
     @FXML
     private ComboBox<String> elevationBox;
-    @FXML
     private TextField searchField;
     
     
@@ -134,7 +137,7 @@ public class homeController implements Initializable{
     
     @FXML
     private Button adminBtn;
-
+    @FXML
     private File filePath;
 
     
@@ -147,7 +150,7 @@ public class homeController implements Initializable{
     void goToAdminPage(ActionEvent event) throws IOException {
     	Parent root = FXMLLoader.load(getClass().getResource("/view/adminFunctionView.fxml"));
         Scene scene = new Scene(root);
-        
+
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
@@ -191,6 +194,7 @@ public class homeController implements Initializable{
     	}catch(IOException e) {
     		System.err.println(e.getMessage());
     	}
+    	
     }
     
     @FXML
@@ -286,7 +290,6 @@ public class homeController implements Initializable{
     		filteredData.setPredicate(createTypePredicate(newValue));
     	}); 
     	
-    	
     }
     
     @FXML
@@ -329,9 +332,20 @@ public class homeController implements Initializable{
 		initBoxes();
 		initData();
 		
+
+		if(!selectedPerson.checkAdminStatus())
+		{
+			adminBtn.setDisable(true);
+		}
+		else
+			adminBtn.setDisable(false);
+		
+		initBoxes();
+		initData();
 	
 	//wraps observableList
 	filteredData=new FilteredList<>(trailList);
+
 	//setting filter predicate
 	searchField.textProperty().addListener((observable, oldValue, newValue)->{
 		filteredData.setPredicate(createPredicate(newValue));
@@ -341,11 +355,10 @@ public class homeController implements Initializable{
 	SortedList<Trails> sortedData=new SortedList<>(filteredData);
 	//stuffer
 	sortedData.comparatorProperty().bind(trailTableView.comparatorProperty());
-
+	
 	setTrailsVisible(false);
 	trailTableView.setItems(sortedData);
 	
-	//Sorted list
 		System.out.println(users);
 		System.out.println(trails);
 		System.out.println(history+"\n");
@@ -465,6 +478,8 @@ public class homeController implements Initializable{
 		passwordField.setDisable(true);
 		phoneField.setDisable(true);
 		pictureField.setDisable(true);
+		}
+		
 	}
 	
 	public void initBoxes() {
