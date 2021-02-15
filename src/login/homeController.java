@@ -1,8 +1,11 @@
 package login;
 
+<<<<<<< HEAD
 import java.awt.Desktop;
 import java.awt.image.BufferedImage;
 import java.io.File;
+=======
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -12,6 +15,7 @@ import java.util.ResourceBundle;
 import java.util.TreeMap;
 import java.util.function.Predicate;
 
+<<<<<<< HEAD
 import javax.imageio.ImageIO;
 
 import hikers.Difficulty;
@@ -20,11 +24,20 @@ import hikers.User;
 import hikers.hikingHistory;
 import hikers.hikingIO;
 import hikers.trailType;
+=======
+import hikers.Difficulty;
+import hikers.Trails;
+import hikers.trailType;
+import hikingHistory.hikingHistory;
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+<<<<<<< HEAD
 import javafx.embed.swing.SwingFXUtils;
+=======
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,12 +52,17 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+<<<<<<< HEAD
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+=======
+import javafx.stage.Stage;
+import view.hikingHistoryController;
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 
 public class homeController implements Initializable{
 	private HashMap<String,Trails> trails;
@@ -53,6 +71,7 @@ public class homeController implements Initializable{
 	
 	private String userName;
 	private User selectedPerson;
+<<<<<<< HEAD
 	public hikingHistory hiked;
 	private final ObservableList<Trails> trailList = FXCollections.observableArrayList();
 	private final ObservableList<hikingHistory> hiking = FXCollections.observableArrayList();
@@ -60,6 +79,12 @@ public class homeController implements Initializable{
 	private FilteredList<Trails> filteredData;
 	private boolean isTrailEmpty;
 	SortedList<Trails> sortedData;
+=======
+	private User userMan;
+	private final ObservableList<Trails> trailList = FXCollections.observableArrayList();
+	private final ObservableList<hikingHistory> hiking = FXCollections.observableArrayList();
+	private final ObservableList<User> userList= FXCollections.observableArrayList();
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 	
 	
 	//all things below here are for the user, such as user info
@@ -68,6 +93,7 @@ public class homeController implements Initializable{
     @FXML
     private Label usernameLabel;
     @FXML
+<<<<<<< HEAD
     private ImageView userImage;
     @FXML
     private TextField firstNameField;
@@ -86,6 +112,18 @@ public class homeController implements Initializable{
 
     @FXML
     private TextField pictureField;
+=======
+    private TableView<User> personTableView;
+    @FXML
+    private TableColumn<User, String> nameColumn;
+    @FXML
+    private TableColumn<User, String> lastNameColumn;
+    @FXML
+    private TableColumn<User, String> usernameColumn;
+    @FXML
+    private TableColumn<User, String> telephoneColumn;
+    
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
     //all things below here are for the trails tab
     
     @FXML
@@ -104,6 +142,7 @@ public class homeController implements Initializable{
     private TableColumn<Trails, String> typeColumn;
     
     @FXML
+<<<<<<< HEAD
     private ComboBox<Difficulty> difficultyComboBox;
      @FXML
     private ComboBox <trailType>comboBox;
@@ -111,6 +150,14 @@ public class homeController implements Initializable{
     private ComboBox<String> lengthBox;
     @FXML
     private ComboBox<String> elevationBox;
+=======
+    private ComboBox<String> difficultyComboBox;
+     @FXML
+    private ComboBox <String>comboBox;
+    @FXML
+    private Label comboLabel;
+    
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
     @FXML
     private TextField searchField;
     
@@ -135,7 +182,10 @@ public class homeController implements Initializable{
     @FXML
     private Button adminBtn;
 
+<<<<<<< HEAD
     private File filePath;
+=======
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 
     
     //start of methods
@@ -145,9 +195,21 @@ public class homeController implements Initializable{
     
     @FXML
     void goToAdminPage(ActionEvent event) throws IOException {
+<<<<<<< HEAD
     	Parent root = FXMLLoader.load(getClass().getResource("/view/adminFunctionView.fxml"));
         Scene scene = new Scene(root);
         
+=======
+    	FXMLLoader loader =new FXMLLoader();
+    	loader.setLocation(getClass().getResource("/view/adminFunctionView.fxml"));
+    	Parent root= loader.load();
+    	
+    	//hikingHistoryController controller= loader.getController();
+		//Parent root = FXMLLoader.load(getClass().getResource("/login/homeController.fxml"));
+        Scene scene = new Scene(root);
+        
+        
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
@@ -158,6 +220,7 @@ public class homeController implements Initializable{
     @FXML
     void searchTable(ActionEvent event) {
     	//wraps observableList
+<<<<<<< HEAD
     	setTrailsVisible(true);
     }
     
@@ -191,10 +254,25 @@ public class homeController implements Initializable{
     	}catch(IOException e) {
     		System.err.println(e.getMessage());
     	}
+=======
+    	//System.out.println(trailList);
+    	FilteredList<Trails> filteredData=new FilteredList<>(trailList);
+    	//setting filter predicate
+    	searchField.textProperty().addListener((observable, oldValue, newValue)->{
+    		filteredData.setPredicate(createPredicate(newValue));
+    	});
+    	
+    	//Sorted list
+    	SortedList<Trails> sortedData=new SortedList<>(filteredData);
+    	//stuffer
+    	sortedData.comparatorProperty().bind(trailTableView.comparatorProperty());
+    	trailTableView.setItems(sortedData);
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
     }
     
     @FXML
     void changeToEditHistory(ActionEvent event) throws IOException {
+<<<<<<< HEAD
 		Parent root = FXMLLoader.load(getClass().getResource("/view/hikingHistoryView.fxml"));
         Scene scene = new Scene(root);
         
@@ -232,11 +310,23 @@ public class homeController implements Initializable{
     void signOut(ActionEvent event) throws IOException {
     	Parent root = FXMLLoader.load(getClass().getResource("/view/sBLogin.fxml"));
         Scene scene = new Scene(root);
+=======
+    	FXMLLoader loader =new FXMLLoader();
+    	loader.setLocation(getClass().getResource("/view/hikingHistoryView.fxml"));
+    	Parent root= loader.load();
+    	
+    	hikingHistoryController controller= loader.getController();
+		//Parent root = FXMLLoader.load(getClass().getResource("/login/homeController.fxml"));
+        Scene scene = new Scene(root);
+        
+        
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
     }
     
+<<<<<<< HEAD
     @FXML
     void signOutQuit(ActionEvent event) throws IOException {
     	try {
@@ -305,12 +395,21 @@ public class homeController implements Initializable{
     	
     	
     }
+=======
+    
+    public void comboBoxWasUpdated() {
+    	this.comboLabel.setText("user "+comboBox.getValue().toString());
+    }
+    
+	
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 
     @Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		users=main.getUsers();
 		trails=main.getTrails();
+<<<<<<< HEAD
 
 		selectedPerson=main.getUserMan();
 		history=selectedPerson.getHikingHistory();
@@ -332,6 +431,34 @@ public class homeController implements Initializable{
 	
 	//wraps observableList
 	filteredData=new FilteredList<>(trailList);
+=======
+		//history=main.getHistory();
+		selectedPerson=main.getUserMan();
+		history=selectedPerson.getHikingHistory();
+		
+		if(!selectedPerson.checkAdminStatus())
+		{
+			adminBtn.setDisable(true);
+		}
+		else
+			adminBtn.setDisable(false);
+		
+		initBoxes();
+//		firstNameLabel.setText(selectedPerson.getFirstName());
+//		comboBox.getItems().addAll(trailType.LOOP.toString(),
+//		trailType.OUTANDBACK.toString(),trailType.POINTTOPOINT.toString(),"none");
+//		
+//		difficultyComboBox.getItems().addAll(Difficulty.EASY.toString(),
+//				Difficulty.MODERATE.toString(),Difficulty.HARD.toString(),"none");
+		
+		
+		//sets all table cells
+		initData();
+	
+	//wraps observableList
+
+	FilteredList<Trails> filteredData=new FilteredList<>(trailList);
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 	//setting filter predicate
 	searchField.textProperty().addListener((observable, oldValue, newValue)->{
 		filteredData.setPredicate(createPredicate(newValue));
@@ -341,15 +468,48 @@ public class homeController implements Initializable{
 	SortedList<Trails> sortedData=new SortedList<>(filteredData);
 	//stuffer
 	sortedData.comparatorProperty().bind(trailTableView.comparatorProperty());
+<<<<<<< HEAD
 
 	setTrailsVisible(false);
 	trailTableView.setItems(sortedData);
 	
 	//Sorted list
+=======
+	trailTableView.setItems(sortedData);
+	
+	//comboBox filter
+	
+	//comboBox.setEditable(true);
+	
+	
+	FilteredList<Trails> filteredComboData=new FilteredList<>(trailList);	//setting filter predicate
+	comboBox.getEditor().textProperty().addListener((observable, oldValue, newValue)->{
+		filteredComboData.setPredicate(createPredicate(newValue));
+	});
+	
+	//Sorted list
+//	SortedList<Trails> sortedList=new SortedList<>(filteredComboData);
+//	//stuffer
+//	sortedList.comparatorProperty().bind(trailTableView.comparatorProperty());
+//	trailNameColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("trailName"));
+//	addressColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("address"));
+//	lengthColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("miles"));
+//	elevationColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("elevationInFeet"));
+//	difficultyColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("difficultyLevel"));
+//	typeColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("type"));
+//	trailTableView.setItems(sortedList);
+	
+		
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 		System.out.println(users);
 		System.out.println(trails);
 		System.out.println(history+"\n");
 		
+<<<<<<< HEAD
+=======
+		
+		
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 	}
 	
 	//below is used for search
@@ -357,6 +517,7 @@ public class homeController implements Initializable{
 		return (trail.getTrailName().toLowerCase().contains(searchText.toLowerCase()));
 	}
 	
+<<<<<<< HEAD
 	private boolean searchFindsLength(Trails trail, String searchText) {
 		int mile=Integer.parseInt(trail.getMiles());
 		return ((searchText.contentEquals("small lengths")&&mile<100)||
@@ -440,6 +601,32 @@ public class homeController implements Initializable{
 	
 	
 	//below are iterators
+=======
+	private Predicate<Trails> createPredicate(String searchText){
+		return trail->{
+			if(searchText==null||searchText.isEmpty()) return true;
+			return searchFindsOrder(trail,searchText);
+		};
+	}
+	//to be implemented
+	private Predicate<Trails> createBoxPredicate(String searchText){
+		return trail->{
+			if(searchText==null||searchText.isEmpty()) return true;
+			return searchFindsOrder(trail,searchText);
+		};
+	}
+	
+	
+	
+	//below are iterators
+	public void iterateUserMap() {
+		Iterator<Map.Entry<String,User>> userIterator=users.entrySet().iterator();
+		while(userIterator.hasNext()) {
+			Map.Entry<String, User> entry=userIterator.next();
+			userList.add(entry.getValue());
+		}
+	}
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 	
 	public void iterateTrailMap() {
 		Iterator<Map.Entry<String,Trails>> trailIterate=trails.entrySet().iterator();
@@ -454,6 +641,7 @@ public class homeController implements Initializable{
 		Iterator<Map.Entry<String,hikingHistory>> historyIterator=history.entrySet().iterator();
 		while(historyIterator.hasNext()) {
 			Map.Entry<String, hikingHistory> entry=historyIterator.next();
+<<<<<<< HEAD
 			hiking.add(entry.getValue());} 
 		}
 	}
@@ -465,20 +653,35 @@ public class homeController implements Initializable{
 		passwordField.setDisable(true);
 		phoneField.setDisable(true);
 		pictureField.setDisable(true);
+=======
+			hiking.add(entry.getValue());
+		}
+		}
+		
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 	}
 	
 	public void initBoxes() {
 		firstNameLabel.setText(selectedPerson.getFirstName());
+<<<<<<< HEAD
 		comboBox.getItems().addAll(trailType.LOOP,
 		trailType.OUTANDBACK,trailType.POINTTOPOINT);
 		difficultyComboBox.getItems().addAll(Difficulty.EASY,
 				Difficulty.MODERATE,Difficulty.HARD);
 		lengthBox.getItems().addAll("small length","medium length","long length");
 		elevationBox.getItems().addAll("small rise","medium rise","high rise");
+=======
+		comboBox.getItems().addAll(trailType.LOOP.toString(),
+		trailType.OUTANDBACK.toString(),trailType.POINTTOPOINT.toString(),"none");
+		
+		difficultyComboBox.getItems().addAll(Difficulty.EASY.toString(),
+				Difficulty.MODERATE.toString(),Difficulty.HARD.toString(),"none");
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 	}
 	// the following sets the data i the table view
 	
 	public void initData() {
+<<<<<<< HEAD
 		
 		firstNameField.setText(selectedPerson.getFirstName());
 		lastNameField.setText(selectedPerson.getLastName());
@@ -489,6 +692,18 @@ public class homeController implements Initializable{
 		disableUserField();	
 		
 		iterateHistoryMap();
+=======
+		iterateUserMap();
+		
+		nameColumn.setCellValueFactory(new PropertyValueFactory<User,String>("firstName"));
+		lastNameColumn.setCellValueFactory(new PropertyValueFactory<User,String>("lastName"));
+		usernameColumn.setCellValueFactory(new PropertyValueFactory<User,String>("userName"));
+		telephoneColumn.setCellValueFactory(new PropertyValueFactory<User,String>("telephoneNumber"));
+		personTableView.setItems(userList);
+		
+		iterateTrailMap();
+	
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 		
 		historyName.setCellValueFactory(new PropertyValueFactory<hikingHistory,String>("trailName"));
 		dateStartColumn.setCellValueFactory(new PropertyValueFactory<hikingHistory,String>("dateAndStartTime"));
@@ -500,7 +715,14 @@ public class homeController implements Initializable{
 		
 		//hashmap implement trails table here
 		
+<<<<<<< HEAD
 		iterateTrailMap();
+=======
+		
+		iterateHistoryMap();
+	
+	
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 	
 		trailNameColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("trailName"));
 		addressColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("address"));
@@ -508,6 +730,7 @@ public class homeController implements Initializable{
 		elevationColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("elevationInFeet"));
 		difficultyColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("difficultyLevel"));
 		typeColumn.setCellValueFactory(new PropertyValueFactory<Trails,String>("type"));
+<<<<<<< HEAD
 		//trailTableView.setItems(trailList);
 		
 	}
@@ -519,6 +742,9 @@ public class homeController implements Initializable{
 		elevationColumn.setVisible(setTrails);
 		difficultyColumn.setVisible(setTrails);
 		typeColumn.setVisible(setTrails);
+=======
+		trailTableView.setItems(trailList);
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 	}
 	
 	

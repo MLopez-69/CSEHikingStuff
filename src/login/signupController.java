@@ -5,9 +5,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 
+<<<<<<< HEAD
 import hikers.User;
 import hikers.hikingHistory;
 import hikers.userStatus;
+=======
+import hikers.userStatus;
+import hikingHistory.hikingHistory;
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -71,7 +76,11 @@ public class signupController implements Initializable {
 
 	    @FXML
 	    void backTrack(ActionEvent event) throws IOException {
+<<<<<<< HEAD
 	    	Parent root = FXMLLoader.load(getClass().getResource("/view/sBLogin.fxml"));
+=======
+	    	Parent root = FXMLLoader.load(getClass().getResource("/login/sBLogin.fxml"));
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 	        Scene scene = new Scene(root);
 	        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 	        window.setScene(scene);

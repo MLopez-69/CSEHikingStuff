@@ -7,9 +7,13 @@ import java.util.ResourceBundle;
 import java.util.TreeMap;
 
 import hikers.Trails;
+<<<<<<< HEAD
 import hikers.User;
 import hikers.hikingHistory;
 import hikers.hikingIO;
+=======
+import hikingHistory.hikingHistory;
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 
 //import org.w3c.dom.Node;
 
@@ -44,6 +48,7 @@ public class controller implements Initializable{
 	 
 	 @FXML
 	    void exitProgram(ActionEvent event) {
+<<<<<<< HEAD
 			try {
 			hikingIO.saveTrailData(trails);
 			hikingIO.saveUserData(users);
@@ -52,21 +57,38 @@ public class controller implements Initializable{
 			e.printStackTrace();
 		}
 			
+=======
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 		 System.exit(0);
 	    }
 
 	    @FXML
 	    void loginButtonPressed(ActionEvent event) throws IOException {
 	    	
+<<<<<<< HEAD
+=======
+	    	//users.c
+	    	
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 	    	if(users.containsKey(usernameField.getText())){
 	    		user=users.get(usernameField.getText());
 	    		if( user.checkPassword(passwordField.getText())) {
 	    			main.setUserMan(user);
 	    		
 	    		FXMLLoader loader =new FXMLLoader();
+<<<<<<< HEAD
 		    	loader.setLocation(getClass().getResource("/view/home.fxml"));
 		    	Parent root= loader.load();
 		    	
+=======
+		    	loader.setLocation(getClass().getResource("/login/home.fxml"));
+		    	Parent root= loader.load();
+		    	
+		    	homeController controller= loader.getController();
+		    	controller.setUser(user);
+		        //controller.initTable(user,history, trails);
+	    		//Parent root = FXMLLoader.load(getClass().getResource("/login/homeController.fxml"));
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 		        Scene scene = new Scene(root);
 		        
 		        
@@ -77,13 +99,21 @@ public class controller implements Initializable{
 	    		
 	    	}
 	    	
+<<<<<<< HEAD
+=======
+	    	
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 
 	    }
 
 	    @FXML
 	    void signUpButtonPressed(ActionEvent event) throws IOException {
 	    	
+<<<<<<< HEAD
 	    	Parent root = FXMLLoader.load(getClass().getResource("/view/signUp.fxml"));
+=======
+	    	Parent root = FXMLLoader.load(getClass().getResource("/login/signUp.fxml"));
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 	        Scene scene = new Scene(root);
 	        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 	        window.setScene(scene);
@@ -98,10 +128,17 @@ public class controller implements Initializable{
 			history=main.getHistory();
 			userMan=main.getUserMan();
 			
+<<<<<<< HEAD
 //			System.out.println(users);
 //			System.out.println(trails);
 //			System.out.println(history);
 //			System.out.println(userMan);
+=======
+			System.out.println(users);
+			System.out.println(trails);
+			System.out.println(history);
+			System.out.println(userMan);
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 		}
 		
 		public User getUser() {

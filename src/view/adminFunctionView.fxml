@@ -14,7 +14,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
+<<<<<<< HEAD
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="902.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="login.AdminViewController">
+=======
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="644.0" prefWidth="902.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.AdminViewController">
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
    <children>
       <TabPane layoutX="1.0" layoutY="25.0" prefHeight="455.0" prefWidth="902.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -93,7 +97,11 @@
                            </children>
                         </GridPane>
                         <Button layoutX="536.0" layoutY="319.0" mnemonicParsing="false" onAction="#editHistory" text="edit history" />
+<<<<<<< HEAD
                         <Button layoutX="734.0" layoutY="319.0" mnemonicParsing="false" onAction="#deleteHistory" text="delete history" />
+=======
+                        <Button layoutX="771.0" layoutY="319.0" mnemonicParsing="false" onAction="#deleteHistory" text="delete history" />
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
                      </children>
                   </AnchorPane>
               </content>
@@ -102,17 +110,28 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="432.0" prefWidth="765.0">
                      <children>
+<<<<<<< HEAD
                         <TableView fx:id="trailTable" layoutY="44.0" onMouseClicked="#editTrailClick" prefHeight="381.0" prefWidth="471.0">
+=======
+                        <TableView fx:id="trailTable" layoutY="44.0" onMouseClicked="#editTrailClick" prefHeight="381.0" prefWidth="466.0">
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
                            <columns>
                               <TableColumn fx:id="trailNameColumn" prefWidth="75.0" text="TrailName" />
                               <TableColumn fx:id="addressColumn" prefWidth="75.0" text="address" />
                               <TableColumn fx:id="lengthColumn" prefWidth="75.0" text="length" />
                               <TableColumn fx:id="elevationColumn" prefWidth="90.0" text="elevation" />
                               <TableColumn fx:id="difficultyColumn" prefWidth="70.0" text="difficulty" />
+<<<<<<< HEAD
                               <TableColumn fx:id="typeColumn" prefWidth="90.0" text="type" />
                            </columns>
                         </TableView>
                         <Button layoutX="749.0" layoutY="350.0" mnemonicParsing="false" onAction="#deleteTrail" text="delete trail" />
+=======
+                              <TableColumn fx:id="typeColumn" text="type" />
+                           </columns>
+                        </TableView>
+                        <Button layoutX="786.0" layoutY="350.0" mnemonicParsing="false" onAction="#deleteTrail" text="delete trail" />
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
                         <GridPane layoutX="535.0" layoutY="14.0" prefHeight="268.0" prefWidth="287.0">
                            <columnConstraints>
                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -133,8 +152,13 @@
                               <ComboBox fx:id="difficultyBox" prefWidth="150.0" promptText="edit difficulty" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
+<<<<<<< HEAD
                         <Button layoutX="535.0" layoutY="350.0" mnemonicParsing="false" onAction="#editTrail" text="edit trail" />
                         <Button layoutX="647.0" layoutY="350.0" mnemonicParsing="false" onAction="#addTrail" text="Add Trail" />
+=======
+                        <Button layoutX="505.0" layoutY="350.0" mnemonicParsing="false" onAction="#editTrail" text="edit trail" />
+                        <Button layoutX="653.0" layoutY="350.0" mnemonicParsing="false" onAction="#addTrail" text="Add Trail" />
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
                         <TextField fx:id="searchField" layoutX="14.0" layoutY="14.0" promptText="search trail here" />
                      </children>
                   </AnchorPane>

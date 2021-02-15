@@ -1,8 +1,12 @@
 package hikers;
 
+<<<<<<< HEAD
 import java.io.Serializable;
 
 public class Trails implements Serializable{
+=======
+public class Trails {
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 	private String trailName;
 	private String address;
 	private String miles;

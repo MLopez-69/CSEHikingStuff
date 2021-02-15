@@ -1,9 +1,18 @@
 package hikers;
 
+<<<<<<< HEAD
 import java.io.Serializable;
 import java.util.TreeMap;
 
 public class Admin extends User implements Serializable{
+=======
+import java.util.TreeMap;
+
+import login.User;
+import hikingHistory.hikingHistory;
+
+public class Admin extends User{
+>>>>>>> b23556ec6f7f2a6a0a0183269ce87af873767539
 
 	public Admin(String userName, String password, String firstName, String lastName, String telephoneNumber,
 			String profilePic, TreeMap<String,hikingHistory> hikingHistory, userStatus status) {
